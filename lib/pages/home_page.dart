@@ -146,10 +146,11 @@ class _HomePageState extends State<HomePage> {
                 ),
                 title: "${e.name} FM".text.white.make(),
                 subtitle: e.tagline.text.white.make(),
-              )).toList(),
+              ),
+              ).toList(),
             ).expand()
           ].vStack(
-            crossAlignment: CrossAxisAlignment.start
+            crossAlignment: CrossAxisAlignment.start,
           ):const Offstage(),
         ),
       ),
@@ -162,7 +163,7 @@ class _HomePageState extends State<HomePage> {
             LinearGradient(
               colors: [
                 AIColors.primaryColor2,
-                _selectedColor ?? AIColors.primaryColor1,
+                _selectedColor??AIColors.primaryColor1,
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -170,39 +171,39 @@ class _HomePageState extends State<HomePage> {
           ).make(),
           [
             AppBar(
-            title: "AI Radio".text.xl4.bold.white.make().shimmer(
-              primaryColor: Vx.purple300,
-              secondaryColor: Colors.white,
-            ),
-            backgroundColor: Colors.transparent,
-            elevation: 0.0,
-            centerTitle: true,
-          ).h(
-            100.0,
-          ).p16(),
-          "Start with - Hey Alan 👇".text.italic.semiBold.white.make(),
-          10.heightBox,
-          VxSwiper.builder(
-            itemCount: sugg.length, 
-            height: 50.0,
-            viewportFraction: 0.35,
-            autoPlay: true,
-            autoPlayAnimationDuration: 3.seconds,
-            autoPlayCurve: Curves.linear,
-            enableInfiniteScroll: true,
-            itemBuilder: (context, index) {
-              final s = sugg[index];
-              return Chip(
-                label: s.text.make(),
-                backgroundColor: Vx.randomColor,
-              );
-            },
+              title: "AI Radio".text.xl4.bold.white.make().shimmer(
+                primaryColor: Vx.purple300,
+                secondaryColor: Colors.white,
+              ),
+              backgroundColor: Colors.transparent,
+              elevation: 0.0,
+              centerTitle: true,
+            ).h(
+              100.0,
+            ).p16(),
+            "Start with - Hey Alan 👇".text.italic.semiBold.white.make(),
+            10.heightBox,
+            VxSwiper.builder(
+              itemCount: sugg.length,
+              height: 50.0,
+              viewportFraction: 0.35,
+              autoPlay: true,
+              autoPlayAnimationDuration: 3.seconds,
+              autoPlayCurve: Curves.linear,
+              enableInfiniteScroll: true,
+              itemBuilder: (context, index) {
+                final s = sugg[index];
+                return Chip(
+                  label: s.text.make(),
+                  backgroundColor: Vx.randomColor,
+                );
+              },
             ),
           ].vStack(
-            alignment: MainAxisAlignment.start
+            alignment: MainAxisAlignment.start,
           ),
           30.heightBox,
-          radios!=null ? VxSwiper.builder(
+          radios!=null?VxSwiper.builder(
             itemCount: radios.length,
             aspectRatio: 1.0,
             //aspectRatio: context.mdWindowSize==MobileWindowSize.small?1.0:context.mdWindowSize==MobileWindowSize.medium?2.0:3.0,
@@ -212,7 +213,7 @@ class _HomePageState extends State<HomePage> {
               final colorHex = radios[index].color;
               _selectedColor = Color(int.tryParse(colorHex));
               setState(() {
-                
+
               });
             },
             itemBuilder: (context,index) {
@@ -289,7 +290,7 @@ class _HomePageState extends State<HomePage> {
               if(_isPlaying)
                 "Playing Now - ${_selectedRadio.name} FM".text.white.makeCentered(),
               Icon(
-                _isPlaying ? CupertinoIcons.stop_circle:CupertinoIcons.play_circle,
+                _isPlaying?CupertinoIcons.stop_circle:CupertinoIcons.play_circle,
                 color: Colors.white,
                 size: 50.0,
               ).onInkTap(() {
