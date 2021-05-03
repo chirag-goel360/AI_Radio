@@ -22,7 +22,7 @@ class MyRadioList {
   }
 
   factory MyRadioList.fromMap(Map<String, dynamic> map) {
-    if(map==null) return null;
+    if (map == null) return null;
 
     return MyRadioList(
       radios: List<MyRadio>.from(map['radios']?.map((x) => MyRadio.fromMap(x))),
@@ -31,7 +31,8 @@ class MyRadioList {
 
   String toJson() => json.encode(toMap());
 
-  factory MyRadioList.fromJson(String source) => MyRadioList.fromMap(json.decode(source));
+  factory MyRadioList.fromJson(String source) =>
+      MyRadioList.fromMap(json.decode(source));
 
   @override
   String toString() => 'MyRadioList(radios: $radios)';
@@ -41,8 +42,7 @@ class MyRadioList {
     if (identical(this, other)) return true;
     final listEquals = const DeepCollectionEquality().equals;
 
-    return other is MyRadioList &&
-        listEquals(other.radios, radios);
+    return other is MyRadioList && listEquals(other.radios, radios);
   }
 
   @override
@@ -120,7 +120,7 @@ class MyRadio {
   }
 
   factory MyRadio.fromMap(Map<String, dynamic> map) {
-    if(map==null) return null;
+    if (map == null) return null;
 
     return MyRadio(
       id: map['id'],
@@ -139,7 +139,8 @@ class MyRadio {
 
   String toJson() => json.encode(toMap());
 
-  factory MyRadio.fromJson(String source) => MyRadio.fromMap(json.decode(source));
+  factory MyRadio.fromJson(String source) =>
+      MyRadio.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -167,15 +168,15 @@ class MyRadio {
   @override
   int get hashCode {
     return id.hashCode ^
-    order.hashCode ^
-    name.hashCode ^
-    tagline.hashCode ^
-    color.hashCode ^
-    desc.hashCode ^
-    url.hashCode ^
-    category.hashCode ^
-    icon.hashCode ^
-    image.hashCode ^
-    lang.hashCode;
+        order.hashCode ^
+        name.hashCode ^
+        tagline.hashCode ^
+        color.hashCode ^
+        desc.hashCode ^
+        url.hashCode ^
+        category.hashCode ^
+        icon.hashCode ^
+        image.hashCode ^
+        lang.hashCode;
   }
 }
