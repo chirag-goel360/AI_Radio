@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
     "Play 104 FM",
     "Pause",
     "Play previous",
-    "Play pop music"
+    "Play pop music",
   ];
 
   @override
@@ -45,12 +45,15 @@ class _HomePageState extends State<HomePage> {
       setState(() {
 
       });
-    });
+    }
+    );
   }
 
   setupAlan() {
     AlanVoice.addButton(
-      "YOUR ALAN VOICE KEY",
+      //Get your API key from https://alan.app/
+      //you have to create your own project and add AI_Radio.txt and AI_Data.txt
+      "API KEY",
       buttonAlign: AlanVoice.BUTTON_ALIGN_RIGHT,
     );
     AlanVoice.callbacks.add((command) => _handleCommand(command.data));
@@ -108,10 +111,16 @@ class _HomePageState extends State<HomePage> {
   }
 
   fetchRadios() async {
-    final radioJson = await rootBundle.loadString("assets/radio.json");
+    final radioJson = await rootBundle.loadString(
+      "assets/radio.json",
+    );
     radios = MyRadioList.fromJson(radioJson).radios;
     _selectedRadio = radios[0];
-    _selectedColor = Color(int.tryParse(_selectedRadio.color));
+    _selectedColor = Color(
+      int.tryParse(
+        _selectedRadio.color,
+        ),
+        );
     print(radios);
     setState(() {
 
@@ -133,7 +142,7 @@ class _HomePageState extends State<HomePage> {
       drawer: Drawer(
         child: Container(
           color: _selectedColor??AIColors.primaryColor2,
-          child: radios != null?[
+          child: radios != null ? [
             100.heightBox,
             "All Channels".text.xl.white.semiBold.make().px16(),
             20.heightBox,
@@ -211,7 +220,11 @@ class _HomePageState extends State<HomePage> {
             onPageChanged: (index) {
               _selectedRadio = radios[index];
               final colorHex = radios[index].color;
-              _selectedColor = Color(int.tryParse(colorHex));
+              _selectedColor = Color(
+                int.tryParse(
+                  colorHex,
+                  ),
+                  );
               setState(() {
 
               });
@@ -290,7 +303,7 @@ class _HomePageState extends State<HomePage> {
               if(_isPlaying)
                 "Playing Now - ${_selectedRadio.name} FM".text.white.makeCentered(),
               Icon(
-                _isPlaying?CupertinoIcons.stop_circle:CupertinoIcons.play_circle,
+                _isPlaying ? CupertinoIcons.stop_circle:CupertinoIcons.play_circle,
                 color: Colors.white,
                 size: 50.0,
               ).onInkTap(() {
@@ -299,7 +312,8 @@ class _HomePageState extends State<HomePage> {
                 }else {
                   _playMusic(_selectedRadio.url);
                 }
-              }),
+              },
+              ),
             ].vStack(),
           ).pOnly(
             bottom: context.percentHeight*12,
