@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   audioplayers:
-  velocity_x:
+  velocity_x: ^1.0.1
   google_fonts:
   alan_voice:
 

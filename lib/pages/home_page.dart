@@ -63,7 +63,6 @@ class _HomePageState extends State<HomePage> {
         break;
       case "play_channel":
         final id = response["id"];
-        _audioPlayer.pause();
         MyRadio newRadio;
         newRadio = radios.firstWhere((element) => element.id == id);
         radios.remove(newRadio);
@@ -218,8 +217,7 @@ class _HomePageState extends State<HomePage> {
           radios != null
               ? VxSwiper.builder(
                   itemCount: radios.length,
-                  aspectRatio: 1.0,
-                  //aspectRatio: context.mdWindowSize==MobileWindowSize.small?1.0:context.mdWindowSize==MobileWindowSize.medium?2.0:3.0,
+                  aspectRatio: 1,
                   enlargeCenterPage: true,
                   onPageChanged: (index) {
                     _selectedRadio = radios[index];
